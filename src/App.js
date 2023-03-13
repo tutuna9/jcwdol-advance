@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Hoc from "./pages/Hoc";
 
 function App() {
+  const Button = (props) => <button style={props.style}>Click Me</button>
+  const Text = (props) => <p style={props.style}>Test</p>
+
+  const StyleButton = Hoc(Button)
+  const StyleText = Hoc(Text)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <StyleButton />
+      <StyleText />
+      <Routes>
+        <Route path="/" element={<Hoc />}/>
+      </Routes>
     </div>
   );
 }
